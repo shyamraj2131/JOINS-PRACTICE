@@ -41,3 +41,10 @@ Since MySQL does not directly support FULL OUTER JOIN, I simulated its behavior 
 Through this task, I gained practical experience in database design, table relationships, primary and foreign key constraints, data insertion, and advanced SQL querying techniques. Most importantly, I developed a strong understanding of JOIN operations and their significance in retrieving related data from multiple tables. The task enhanced my ability to write efficient SQL queries, analyze relational data, and generate meaningful reports from a database system.
 
 Overall, this exercise provided valuable hands-on experience in MySQL database management and strengthened my knowledge of relational database concepts that are widely used in real-world software and business applications.
+
+
+# OUTPUT
+[full  join.html](https://github.com/user-attachments/files/28893863/full.join.html)
+[inter join.html](https://github.com/user-attachments/files/28893865/inter.join.html)
+[left  join.html](https://github.com/user-attachments/files/28893866/left.join.html)
+[right  join.html](https://github.com/user-attachments/files/28893864/right.join.html)
