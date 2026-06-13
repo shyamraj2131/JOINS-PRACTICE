@@ -10,7 +10,7 @@
 
 *MENTOR*: NEELA SANTOSH
 
-## **Task 1: Implementation and Analysis of SQL JOIN Operations in a Placement Management System**
+# Task 1: Implementation and Analysis of SQL JOIN Operations in a Placement Management System
 
 During my 6-week internship as a SQL Developer Intern, I worked on designing and implementing a Placement Management System database using MySQL. For Task 1, my primary objective was to understand and demonstrate the practical use of SQL JOIN operations by creating a relational database and retrieving meaningful information from multiple related tables.
 
