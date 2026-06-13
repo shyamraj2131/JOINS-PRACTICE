@@ -118,19 +118,6 @@ INNER JOIN Job_Postings j  ON a.Job_ID     = j.Job_ID
 INNER JOIN Companies c     ON j.Company_ID = c.Company_ID
 ORDER BY s.Student_ID;
 
-/*
-OUTPUT:
-+------------+---------------+-------------------+------------------------+--------------+------------------+-------------+
-| Student_ID | Student_Name  | Branch            | Job_Title              | Company_Name | Application_Date | Status      |
-+------------+---------------+-------------------+------------------------+--------------+------------------+-------------+
-| 1          | Alice Johnson | Computer Science  | Software Engineer      | Google       | 2024-01-10       | Hired       |
-| 1          | Alice Johnson | Computer Science  | Data Analyst           | Google       | 2024-01-12       | Shortlisted |
-| 2          | Bob Smith     | Electronics       | System Analyst         | TCS          | 2024-01-11       | Pending     |
-| 3          | Charlie Brown | Mechanical        | Associate Developer    | Infosys      | 2024-01-13       | Rejected    |
-| 4          | Diana Prince  | Computer Science  | Software Engineer      | Google       | 2024-01-14       | Hired       |
-| 6          | Fiona Green   | Computer Science  | Cloud Support Engineer | Amazon       | 2024-01-15       | Shortlisted |
-+------------+---------------+-------------------+------------------------+--------------+------------------+-------------+
-*/
 
 -- ------------------------------------------------------------
 -- LEFT JOIN
@@ -151,21 +138,6 @@ LEFT JOIN Job_Postings j  ON a.Job_ID     = j.Job_ID
 LEFT JOIN Companies c     ON j.Company_ID = c.Company_ID
 ORDER BY s.Student_ID;
 
-/*
-OUTPUT:
-+------------+---------------+-------------------+----------------+------------------------+--------------+-------------+
-| Student_ID | Student_Name  | Branch            | Application_ID | Job_Title              | Company_Name | Status      |
-+------------+---------------+-------------------+----------------+------------------------+--------------+-------------+
-| 1          | Alice Johnson | Computer Science  | 1              | Software Engineer      | Google       | Hired       |
-| 1          | Alice Johnson | Computer Science  | 2              | Data Analyst           | Google       | Shortlisted |
-| 2          | Bob Smith     | Electronics       | 3              | System Analyst         | TCS          | Pending     |
-| 3          | Charlie Brown | Mechanical        | 4              | Associate Developer    | Infosys      | Rejected    |
-| 4          | Diana Prince  | Computer Science  | 5              | Software Engineer      | Google       | Hired       |
-| 5          | Evan Rogers   | Civil             | NULL           | NULL                   | NULL         | NULL        |  <-- No application
-| 6          | Fiona Green   | Computer Science  | 6              | Cloud Support Engineer | Amazon       | Shortlisted |
-+------------+---------------+-------------------+----------------+------------------------+--------------+-------------+
-
-*/
 
 -- Filter to find students who never applied
 SELECT s.Student_ID, s.Name, s.Branch
@@ -173,14 +145,6 @@ FROM Students s
 LEFT JOIN Applications a ON s.Student_ID = a.Student_ID
 WHERE a.Application_ID IS NULL;
 
-/*
-OUTPUT:
-+------------+-------------+-------+
-| Student_ID | Name        | Branch|
-+------------+-------------+-------+
-| 5          | Evan Rogers | Civil |
-+------------+-------------+-------+
-*/
 
 -- ------------------------------------------------------------
 -- RIGHT JOIN
@@ -197,20 +161,6 @@ FROM Job_Postings j
 RIGHT JOIN Companies c ON j.Company_ID = c.Company_ID
 ORDER BY c.Company_ID;
 
-/*
-OUTPUT:
-+------------+--------------+--------------+--------+------------------------+
-| Company_ID | Company_Name | Industry     | Job_ID | Job_Title              |
-+------------+--------------+--------------+--------+------------------------+
-| 1          | Google       | Technology   | 1      | Software Engineer      |
-| 1          | Google       | Technology   | 5      | Data Analyst           |
-| 2          | TCS          | IT Services  | 2      | System Analyst         |
-| 3          | Infosys      | IT Services  | 3      | Associate Developer    |
-| 4          | Amazon       | E-Commerce   | 4      | Cloud Support Engineer |
-| 5          | WipTech      | Technology   | NULL   | NULL                   |  <-- No postings yet
-+------------+--------------+--------------+--------+------------------------+
-Key insight: WipTech is registered but has posted no jobs.
-*/
 
 -- ------------------------------------------------------------
 -- FULL OUTER JOIN (Simulated in MySQL using UNION)
@@ -245,20 +195,6 @@ RIGHT JOIN Companies c   ON p.Company_ID = c.Company_ID
 RIGHT JOIN Job_Postings j ON p.Job_ID    = j.Job_ID
 ORDER BY Student_ID;
 
-/*
-OUTPUT:
-+------------+---------------+----------------+--------------+-------------------+-----------+
-| Student_ID | Student_Name  | Salary_Package | Company_Name | Job_Title         | Status    |
-+------------+---------------+----------------+--------------+-------------------+-----------+
-| 1          | Alice Johnson | 1200000.00     | Google       | Software Engineer | Accepted  |
-| 2          | Bob Smith     | NULL           | NULL         | NULL              | NULL      |
-| 3          | Charlie Brown | NULL           | NULL         | NULL              | NULL      |
-| 4          | Diana Prince  |  950000.00     | Google       | Software Engineer | Accepted  |
-| 5          | Evan Rogers   | NULL           | NULL         | NULL              | NULL      |
-| 6          | Fiona Green   | NULL           | NULL         | NULL              | NULL      |
-+------------+---------------+----------------+--------------+-------------------+-----------+
-Key insight: Only Alice and Diana are placed. Others appear with NULLs.
-*/
 
 -- ============================================================
 -- SUMMARY OF JOIN TYPES USED
